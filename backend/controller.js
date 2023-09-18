@@ -1,7 +1,6 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs").promises;
 const createPdf = async (req, res) => {
-    console.log(req.body.AchievementsTwo)
   let {
     textValue,
     expertise,
@@ -39,7 +38,6 @@ const createPdf = async (req, res) => {
   } = req.body;
   try {
     const browser = await puppeteer.launch({headless: true});
-
     const page = await browser.newPage();
     const pdfFilePath = "Resume.pdf";
     const pdfExists = await fileExists(pdfFilePath);
@@ -69,7 +67,7 @@ const createPdf = async (req, res) => {
         </head>
         <body>
             <form>
-                <div class='bg-neutral-100 flex justify-center items-center  h-[875px]'>
+                <div class='bg-neutral-100 flex justify-center items-center p-2  h-[875px]'>
         
                     <div class="bg-white max-w-[800px] min-w-[800px] min-h-[872px] max-h-[872px] p-4">
         
@@ -100,7 +98,7 @@ const createPdf = async (req, res) => {
                                 <span class="">+91-</span>
                                 <input
                                     type="text"
-                                    class=" w-[80%] outline-none  font-semibold   px-1"
+                                    class="  outline-none text-left  font-semibold   px-1"
                                 value="${inputValue}"
                                     maxLength="10"
                                     placeholder="XXXXXXXXX"
@@ -131,7 +129,7 @@ const createPdf = async (req, res) => {
                             <div class="border border-sky-200"></div>
                             <textarea
                                 type="text"
-                                rows="3" 
+                                rows="5" 
                                 class="w-[100%] resize-none text-[10px]  px-1"
                                 placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions. Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups  hsbdnhsnhds hsjhcaljc;osj;oj kidshlkahsd jbdsbdskbcbds jkbsckjsdbcb bkjjbcab"
                                 required
@@ -152,7 +150,7 @@ const createPdf = async (req, res) => {
                             </div>
                             <textarea  placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions followed by bjddi hrb rjrjr udud udbbd drrvrd
         . Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups  
-        . Maintained High Standard work" class="w-[100%] mt-1 resize-none text-[10px]  overflow-y-hidden  px-1" rows="4"> ${CompanyOneData} </textarea>
+        . Maintained High Standard work" class="w-[100%] mt-1 resize-none text-[10px]  overflow-y-hidden  px-1" rows="5"> ${CompanyOneData} </textarea>
                             
                             <div class="flex justify-between ">
                                 <input type="text"value="${CompanyTwo}" placeholder="ABC Company" class="text-[12px] font-semibold  outline-none"></input>
@@ -164,7 +162,7 @@ const createPdf = async (req, res) => {
                             </div>
                             <textarea  placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions followed by bjddi hrb rjrjr udud udbbd drrvrd
         . Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups  
-        . Maintained High Standard work" class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="4"> ${CompanyTwoData}</textarea value=$>
+        . Maintained High Standard work" class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="5"> ${CompanyTwoData}</textarea value=$>
                         </div>
         
                         <!-- Projects -->
@@ -180,7 +178,7 @@ const createPdf = async (req, res) => {
                                 <input type="text"value="${projectOrganizationd}" placeholder="Jun 2022 - Dec 2022" class="text-right text-[12px] font-semibold  outline-none"></input>
                             </div>
                             <textarea  placeholder=" . Designed wireframes, prototypes, and visual designs for mobile and web-based products  hrbkjfrn drbjdrhrh duidr3uhbdrasd   . sdsada deiudr3bgd3riodrb  dud3rhdrhr dwe
-         . Conducted usability testing and iterated on design solutions based on user feedback  " class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="3">${projectOrganizationdata}</textarea>
+         . Conducted usability testing and iterated on design solutions based on user feedback  " class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="5">${projectOrganizationdata}</textarea>
                         </div>
         
                         <!-- Education -->
@@ -199,7 +197,7 @@ const createPdf = async (req, res) => {
                                 <input type="text"value="${expert}" placeholder="Specialization" class="text-[11px] outline-none"></input>
                                 <input type="text"value="${expertPerformance}" placeholder="Performance: 88%" class="text-right text-[11px] outline-none"></input>
                             </div>
-                            <textarea  placeholder=" Intensive, full-time program that provided hands-on training in user-centered design, prototyping, and visual design  " class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="2">${expertData}</textarea value=$>
+                            <textarea  placeholder=" Intensive, full-time program that provided hands-on training in user-centered design, prototyping, and visual design  " class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="3">${expertData}</textarea value=$>
                         </div>
         
                         <!-- Skills -->

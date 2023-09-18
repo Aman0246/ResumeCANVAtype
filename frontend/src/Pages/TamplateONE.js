@@ -46,12 +46,15 @@ export default function TamplateONE() {
   const [Skills,setSkills]=useState('')
   const [AchievementsTwo,setAchievementsTwo]=useState('')
   const [AchievementsOne,setAchievementsOne]=useState('')
-
+const[hidebutton,sethidebutton]=useState(true)
   const handelGeneratePdf =async()=>{
  try {
-
-  await axios.post("/creatPdf",{textValue,expertise,location,CompanyOne,CompanyOneP,CompanyOneD,CompanyOneData,CompanyOneL,CompanyTwo,CompanyTwoL,CompanyTwoP,CompanyTwoD,CompanyTwoData,projectname,projectPlace,projectOrganization,projectOrganizationd,projectOrganizationdata,schoolname,schoolnameP,schoolCamp,schoolCampD,expert,expertPerformance,expertData,Tools,Skills,AchievementsTwo,AchievementsOne,inputValue,inputEmail,inputProfileLink,names})
- } catch (error) {
+  sethidebutton(true)
+  let a=await axios.post("/creatPdf",{textValue,expertise,location,CompanyOne,CompanyOneP,CompanyOneD,CompanyOneData,CompanyOneL,CompanyTwo,CompanyTwoL,CompanyTwoP,CompanyTwoD,CompanyTwoData,projectname,projectPlace,projectOrganization,projectOrganizationd,projectOrganizationdata,schoolname,schoolnameP,schoolCamp,schoolCampD,expert,expertPerformance,expertData,Tools,Skills,AchievementsTwo,AchievementsOne,inputValue,inputEmail,inputProfileLink,names})
+ if(a){
+  sethidebutton(false)
+ }
+} catch (error) {
   
  }
   }
@@ -68,13 +71,13 @@ fileDownload(response.data, 'Resume.pdf');
   return (
     <>
    
-<button onClick={handelGeneratePdf}  className='bg-sky-500 text-white p-2 rounded'>Generate</button>
-<button onClick={handleDownload}  className='bg-sky-500 text-white p-2 rounded'>Download PDF</button>
+<button  onClick={handelGeneratePdf}  className='bg-sky-500 text-white p-2 rounded'>Generate</button>
+<button style={{ display: hidebutton ? 'none' : '' }} onClick={handleDownload}  className='bg-sky-500 text-white p-2 rounded'>Download PDF</button>
     <form>
       
-      <div className='bg-neutral-200 flex justify-center items-center h-[875px]'>
+      <div  className='bg-neutral-200 flex justify-center items-center '>
 
-      <div className="bg-white max-w-[612px] min-w-[612px] min-h-[872px] max-h-[872px] p-4">
+      <div className="bg-white max-w-[612px] min-w-[612px]  p-4">
 
               <div className="flex justify-between">
                       <input
@@ -140,7 +143,7 @@ fileDownload(response.data, 'Resume.pdf');
                     <div className="border border-sky-200"></div>
                     <textarea
                       type="text"
-                      rows={3}
+                      rows={5}
                       className="w-[100%]  resize-none text-[10px]  px-1"
                       placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions. Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups  hsbdnhsnhds hsjhcaljc;osj;oj kidshlkahsd jbdsbdskbcbds jkbsckjsdbcb bkjjbcab"
                       value={textValue}
@@ -165,7 +168,7 @@ fileDownload(response.data, 'Resume.pdf');
 
                   <textarea  value={CompanyOneData} onChange={(e)=>setCompanyOneData(e.target.value)} placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions followed by bjddi hrb rjrjr udud udbbd drrvrd
 . Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups  
-. Maintained High Standard work"  className="w-[100%] mt-1 resize-none text-[10px]  overflow-y-hidden  px-1" rows={4}></textarea>
+. Maintained High Standard work"  className="w-[100%] mt-1 resize-none text-[10px]  overflow-y-hidden  px-1" rows={5}></textarea>
                  
                  
                     <div className="flex justify-between ">
@@ -179,7 +182,7 @@ fileDownload(response.data, 'Resume.pdf');
 
                   <textarea value={CompanyTwoData} onChange={(e)=>setCompanyTwoData(e.target.value)} placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions followed by bjddi hrb rjrjr udud udbbd drrvrd
 . Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups  
-. Maintained High Standard work"  className="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows={4}></textarea>
+. Maintained High Standard work"  className="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows={5}></textarea>
               </div>
      
 
@@ -196,11 +199,11 @@ fileDownload(response.data, 'Resume.pdf');
                       <input type="text" value={projectOrganizationd} onChange={(e)=>setprojectOrganizationd(e.target.value)} placeholder="Jun 2022 - Dec 2022"  className="text-right text-[12px] font-semibold  outline-none"></input>
                     </div>
                   <textarea value={projectOrganizationdata} onChange={(e)=>setprojectOrganizationdata(e.target.value)} placeholder=' . Designed wireframes, prototypes, and visual designs for mobile and web-based products  hrbkjfrn drbjdrhrh duidr3uhbdrasd   . sdsada deiudr3bgd3riodrb  dud3rhdrhr dwe
-                   . Conducted usability testing and iterated on design solutions based on user feedback  'className="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows={3}></textarea>                   
+                   . Conducted usability testing and iterated on design solutions based on user feedback  'className="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows={5}></textarea>                   
              </div>
 
 
-            <div className="  ">
+            <div className=" mt-2  ">
                     <div className=" text-lg">Education</div>
                     <div className="border border-sky-200"></div>
                     <div className="flex justify-between">
@@ -216,13 +219,13 @@ fileDownload(response.data, 'Resume.pdf');
                       <input type="text" value={expertPerformance} onChange={(e)=>setexpertPerformance(e.target.value)}   placeholder="Performance: 88%"  className="text-right text-[11px] outline-none"></input>
                     </div>
                   <textarea value={expertData} onChange={(e)=>setexpertData(e.target.value)}  placeholder=' Intensive, full-time program that provided hands-on training in user-centered design, prototyping, and visual design  
-'className="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows={2}></textarea>                   
+'className="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows={3}></textarea>                   
              </div>
 
 
 
 
-                    <div className="  ">
+                    <div className=" mt-2  ">
                             <div className=" text-lg">Skills</div>
                             <div className="border border-sky-200"></div>
                           <textarea  value={Skills} onChange={(e)=>setSkills(e.target.value)}  placeholder='React, Nodejs, MongoDb, figma, js, React, Nodejs, MongoDb, figma, js,React, Nodejs, MongoDb, figma, js,React, Nodejs, MongoDb, figma, js,React, Nodejs, MongoDb, figma, js, 
@@ -235,15 +238,15 @@ fileDownload(response.data, 'Resume.pdf');
                     <div className=" ">
                             <div className=" text-lg">Tools</div>
                             <div className="border border-sky-200"></div>
-                          <textarea  value={Tools} onChange={(e)=>setTools(e.target.value)}  placeholder='Bootstrap, Foundation, CSS Grid Layout, Browser Developer Tools, AWS Elastic Load Balancing (ELB), Materialize CSS, Media Queries 'className="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows={2}></textarea>                   
+                          <textarea  value={Tools} onChange={(e)=>setTools(e.target.value)}  placeholder='Bootstrap, Foundation, CSS Grid Layout, Browser Developer Tools, AWS Elastic Load Balancing (ELB), Materialize CSS, Media Queries 'className="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows={3}></textarea>                   
                     </div>
 
 
                     <div className=" ">
                             <div className=" text-lg">Achievements</div>
                             <div className="border border-sky-200"></div>
-                          <textarea value={AchievementsOne} onChange={(e)=>setAchievementsOne(e.target.value)} placeholder="Digital Marketing Certification by Google" className=" text-sky-500 text-[10px] resize-none w-full" rows={2}></textarea>                   
-                          <textarea value={AchievementsTwo} onChange={(e)=>setAchievementsTwo(e.target.value)} className=" text-sky-500 resize-none w-full text-[10px]" placeholder=" dbveb ebdbdbd bedbbe bdehd djudedeb eddbde jdee djndnbde bebefbbfe jebebfe bffgfrgf efbhefbfeiu dehjbdebefce dehjcebfe" rows={1}></textarea>                   
+                          <textarea value={AchievementsOne} onChange={(e)=>setAchievementsOne(e.target.value)} placeholder="Digital Marketing Certification by Google ebdbdbd bedbbe ebdbdbd bedbbe ebdbdbd bedbbe ebdbdbd bedbbe ebdbdbd bedbbe ebdbdbd bedbbe ebdbdbd bedbbe " className=" text-sky-500 text-[10px] resize-none w-full" rows={2}></textarea>                   
+                          <textarea value={AchievementsTwo} onChange={(e)=>setAchievementsTwo(e.target.value)} className=" text-sky-500 resize-none w-full text-[10px]" placeholder=" dbveb ebdbdbd bedbbe ebdbdbd bedbbe ebdbdbd bedbbe ebdbdbd bedbbe bdehd djudedeb eddbde jdee djndnbde bebefbbfe jebebfe bffgfrgf efbhefbfeiu dehjbdebefce dehjcebfe" rows={2}></textarea>                   
                     </div>
       </div>
       </div>
