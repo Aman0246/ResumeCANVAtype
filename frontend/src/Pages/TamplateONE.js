@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios'
-
+import fileDownload from "js-file-download";
 export default function TamplateONE() {
   const [inputValue, setInputValue] = useState('');
   const [inputEmail, setinputEmail] = useState('');
@@ -55,10 +55,21 @@ export default function TamplateONE() {
   
  }
   }
+  const handleDownload =async(e)=>{
+ try {
+e.preventDefault()
+const response = await axios.get("/download-pdf", { responseType: "blob" });
+// Use js-file-download to trigger the file download
+fileDownload(response.data, 'Resume.pdf');
+ } catch (error) {
+  console.log(error)
+ }
+  }
   return (
     <>
    
-<button onClick={handelGeneratePdf}  className='bg-sky-500 text-white p-2 rounded'>Save as pdf</button>
+<button onClick={handelGeneratePdf}  className='bg-sky-500 text-white p-2 rounded'>Generate</button>
+<button onClick={handleDownload}  className='bg-sky-500 text-white p-2 rounded'>Download PDF</button>
     <form>
       
       <div className='bg-neutral-200 flex justify-center items-center h-[875px]'>
