@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs").promises;
 const createPdf = async (req, res) => {
+    console.log(req.body.AchievementsTwo)
   let {
     textValue,
     expertise,
@@ -37,7 +38,7 @@ const createPdf = async (req, res) => {
     names,
   } = req.body;
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless: true});
 
     const page = await browser.newPage();
     const pdfFilePath = "Resume.pdf";
@@ -131,11 +132,10 @@ const createPdf = async (req, res) => {
                             <textarea
                                 type="text"
                                 rows="3" 
-                                value="${textValue}"
                                 class="w-[100%] resize-none text-[10px]  px-1"
                                 placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions. Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups  hsbdnhsnhds hsjhcaljc;osj;oj kidshlkahsd jbdsbdskbcbds jkbsckjsdbcb bkjjbcab"
                                 required
-                            ></textarea>
+                            > ${textValue}</textarea>
                         </div>
         
                         <!-- Professional Experience -->
@@ -150,9 +150,9 @@ const createPdf = async (req, res) => {
                                 <input type="text"value="${CompanyOneP}" placeholder="UX Design Intern" class="text-[12px] font-semibold  outline-none"></input>
                                 <input type="text"value="${CompanyOneD}" placeholder="Jan 2023 - Present" class="text-right text-[12px] font-semibold  outline-none"></input>
                             </div>
-                            <textarea value="${CompanyOneData}" placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions followed by bjddi hrb rjrjr udud udbbd drrvrd
+                            <textarea  placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions followed by bjddi hrb rjrjr udud udbbd drrvrd
         . Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups  
-        . Maintained High Standard work" class="w-[100%] mt-1 resize-none text-[10px]  overflow-y-hidden  px-1" rows="4"></textarea>
+        . Maintained High Standard work" class="w-[100%] mt-1 resize-none text-[10px]  overflow-y-hidden  px-1" rows="4"> ${CompanyOneData} </textarea>
                             
                             <div class="flex justify-between ">
                                 <input type="text"value="${CompanyTwo}" placeholder="ABC Company" class="text-[12px] font-semibold  outline-none"></input>
@@ -162,9 +162,9 @@ const createPdf = async (req, res) => {
                                 <input type="text"value="${CompanyTwoP}" placeholder="UX Design Intern" class="text-[12px] font-semibold  outline-none"></input>
                                 <input type="text"value="${CompanyTwoD}" placeholder="Jan 2023 - Present" class="text-right text-[12px] font-semibold  outline-none"></input>
                             </div>
-                            <textarea value="${CompanyTwoData}" placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions followed by bjddi hrb rjrjr udud udbbd drrvrd
+                            <textarea  placeholder="Conducted user research and analyzed data to identify design opportunities and inform design decisions followed by bjddi hrb rjrjr udud udbbd drrvrd
         . Collaborated with cross-functional teams to create wireframes, prototypes, and high-fidelity mockups  
-        . Maintained High Standard work" class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="4"></textarea value=$>
+        . Maintained High Standard work" class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="4"> ${CompanyTwoData}</textarea value=$>
                         </div>
         
                         <!-- Projects -->
@@ -179,8 +179,8 @@ const createPdf = async (req, res) => {
                                 <input type="text"value="${projectOrganization}" placeholder="Organization Name" class="text-[12px] font-semibold  outline-none"></input>
                                 <input type="text"value="${projectOrganizationd}" placeholder="Jun 2022 - Dec 2022" class="text-right text-[12px] font-semibold  outline-none"></input>
                             </div>
-                            <textarea value="${projectOrganizationdata}" placeholder=" . Designed wireframes, prototypes, and visual designs for mobile and web-based products  hrbkjfrn drbjdrhrh duidr3uhbdrasd   . sdsada deiudr3bgd3riodrb  dud3rhdrhr dwe
-         . Conducted usability testing and iterated on design solutions based on user feedback  " class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="3"></textarea>
+                            <textarea  placeholder=" . Designed wireframes, prototypes, and visual designs for mobile and web-based products  hrbkjfrn drbjdrhrh duidr3uhbdrasd   . sdsada deiudr3bgd3riodrb  dud3rhdrhr dwe
+         . Conducted usability testing and iterated on design solutions based on user feedback  " class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="3">${projectOrganizationdata}</textarea>
                         </div>
         
                         <!-- Education -->
@@ -199,29 +199,29 @@ const createPdf = async (req, res) => {
                                 <input type="text"value="${expert}" placeholder="Specialization" class="text-[11px] outline-none"></input>
                                 <input type="text"value="${expertPerformance}" placeholder="Performance: 88%" class="text-right text-[11px] outline-none"></input>
                             </div>
-                            <textarea value="${expertData}" placeholder=" Intensive, full-time program that provided hands-on training in user-centered design, prototyping, and visual design  " class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="2"></textarea value=$>
+                            <textarea  placeholder=" Intensive, full-time program that provided hands-on training in user-centered design, prototyping, and visual design  " class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="2">${expertData}</textarea value=$>
                         </div>
         
                         <!-- Skills -->
                         <div class="  ">
                             <div class="text-lg">Skills</div>
                             <div class="border border-sky-200"></div>
-                            <textarea value="${Skills}" placeholder='React, Nodejs, MongoDb, figma, js, React, Nodejs, MongoDb, figma, js,React, Nodejs, MongoDb, figma, js,React, Nodejs, MongoDb, figma, js,React, Nodejs, MongoDb, figma, js, ' class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="2"></textarea>
+                            <textarea  placeholder='React, Nodejs, MongoDb, figma, js, React, Nodejs, MongoDb, figma, js,React, Nodejs, MongoDb, figma, js,React, Nodejs, MongoDb, figma, js,React, Nodejs, MongoDb, figma, js, ' class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="2"> ${Skills}</textarea>
                         </div>
         
                         <!-- Tools -->
                         <div class=" ">
                             <div class="text-lg">Tools</div>
                             <div class="border border-sky-200"></div>
-                            <textarea value="${Tools}" placeholder='Bootstrap, Foundation, CSS Grid Layout, Browser Developer Tools, AWS Elastic Load Balancing (ELB), Materialize CSS, Media Queries ' class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="2"></textarea>
+                            <textarea  placeholder='Bootstrap, Foundation, CSS Grid Layout, Browser Developer Tools, AWS Elastic Load Balancing (ELB), Materialize CSS, Media Queries ' class="w-[100%] mt-1 resize-none text-[10px] overflow-y-hidden  px-1" rows="2">${Tools}</textarea>
                         </div>
         
                         <!-- Achievements -->
                         <div class=" ">
                             <div class="text-lg">Achievements</div>
-                            <div class="border border-sky-200"></div>
-                            <textarea value="${AchievementsOne}" placeholder="Digital Marketing Certification by Google" class=" text-sky-500 text-[10px] resize-none w-full" rows="1"></textarea value=$>
-                            <textarea value="${AchievementsTwo}" placeholder=" dbveb ebdbdbd bedbbe bdehd djudedeb eddbde jdee djndnbde bebefbbfe jebebfe bffgfrgf efbhefbfeiu dehjbdebefce dehjcebfe" class=" text-sky-500 resize-none w-full text-[10px]" rows="1"></textarea value=$>
+                            <div class=""></div>
+                            <textarea type="text"  placeholder="Digital Marketing Certification by Google" class=" text-sky-500 text-[10px] resize-none w-full" rows="2">${AchievementsOne}</textarea>
+                            <textarea type="text"  placeholder=" dbveb ebdbdbd bedbbe bdehd djudedeb eddbde jdee djndnbde bebefbbfe jebebfe bffgfrgf efbhefbfeiu dehjbdebefce dehjcebfe" class=" text-sky-500 resize-none w-full text-[10px]" rows="1">${AchievementsTwo}</textarea>
                         </div>
                     </div>
                 </div>
@@ -231,17 +231,28 @@ const createPdf = async (req, res) => {
         `);
         
     // Create PDF
-    await page.pdf({
+    const pdfBuffer = await page.pdf({
       path: "Resume.pdf",
       printBackground: true,
     });
 
     console.log("PDF generated successfully.");
     await browser.close();
-    res.send("PDF generated successfully.")
+        
+    res.setHeader("Content-Disposition", `attachment; filename="Resume.pdf"`);
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Length", pdfBuffer.length);
+    // Send the PDF as the response
+    res.status(200).send(pdfBuffer);
+        
   } catch (error) {
     console.error("Error:", error);
+    res.status(500).send("Error generating PDF");
   }
 };
+
+
+
+
 
 module.exports = { createPdf };

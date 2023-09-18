@@ -228,11 +228,10 @@ export default function TamplateONE() {
                     </div>
 
 
-
                     <div className=" ">
                             <div className=" text-lg">Achievements</div>
                             <div className="border border-sky-200"></div>
-                          <textarea value={AchievementsOne} onChange={(e)=>setAchievementsOne(e.target.value)} placeholder="Digital Marketing Certification by Google" className=" text-sky-500 text-[10px] resize-none w-full" rows={1}></textarea>                   
+                          <textarea value={AchievementsOne} onChange={(e)=>setAchievementsOne(e.target.value)} placeholder="Digital Marketing Certification by Google" className=" text-sky-500 text-[10px] resize-none w-full" rows={2}></textarea>                   
                           <textarea value={AchievementsTwo} onChange={(e)=>setAchievementsTwo(e.target.value)} className=" text-sky-500 resize-none w-full text-[10px]" placeholder=" dbveb ebdbdbd bedbbe bdehd djudedeb eddbde jdee djndnbde bebefbbfe jebebfe bffgfrgf efbhefbfeiu dehjbdebefce dehjcebfe" rows={1}></textarea>                   
                     </div>
       </div>
