@@ -50,8 +50,8 @@ export default function TamplateONE() {
   const handelGeneratePdf =async()=>{
  try {
   sethidebutton(true)
-let a =  await axios.post("/creatPdf",{textValue,expertise,location,CompanyOne,CompanyOneP,CompanyOneD,CompanyOneData,CompanyOneL,CompanyTwo,CompanyTwoL,CompanyTwoP,CompanyTwoD,CompanyTwoData,projectname,projectPlace,projectOrganization,projectOrganizationd,projectOrganizationdata,schoolname,schoolnameP,schoolCamp,schoolCampD,expert,expertPerformance,expertData,Tools,Skills,AchievementsTwo,AchievementsOne,inputValue,inputEmail,inputProfileLink,names})
-if(a){
+let b=await axios.post("/creatPdf",{textValue,expertise,location,CompanyOne,CompanyOneP,CompanyOneD,CompanyOneData,CompanyOneL,CompanyTwo,CompanyTwoL,CompanyTwoP,CompanyTwoD,CompanyTwoData,projectname,projectPlace,projectOrganization,projectOrganizationd,projectOrganizationdata,schoolname,schoolnameP,schoolCamp,schoolCampD,expert,expertPerformance,expertData,Tools,Skills,AchievementsTwo,AchievementsOne,inputValue,inputEmail,inputProfileLink,names})
+if(b){
   sethidebutton(false)
  }
 } catch (error) {
