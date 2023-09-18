@@ -46,12 +46,15 @@ export default function TamplateONE() {
   const [Skills,setSkills]=useState('')
   const [AchievementsTwo,setAchievementsTwo]=useState('')
   const [AchievementsOne,setAchievementsOne]=useState('')
-
+  const[hidebutton,sethidebutton]=useState(true)
   const handelGeneratePdf =async()=>{
  try {
-
-  await axios.post("/creatPdf",{textValue,expertise,location,CompanyOne,CompanyOneP,CompanyOneD,CompanyOneData,CompanyOneL,CompanyTwo,CompanyTwoL,CompanyTwoP,CompanyTwoD,CompanyTwoData,projectname,projectPlace,projectOrganization,projectOrganizationd,projectOrganizationdata,schoolname,schoolnameP,schoolCamp,schoolCampD,expert,expertPerformance,expertData,Tools,Skills,AchievementsTwo,AchievementsOne,inputValue,inputEmail,inputProfileLink,names})
- } catch (error) {
+  sethidebutton(true)
+let a =  await axios.post("/creatPdf",{textValue,expertise,location,CompanyOne,CompanyOneP,CompanyOneD,CompanyOneData,CompanyOneL,CompanyTwo,CompanyTwoL,CompanyTwoP,CompanyTwoD,CompanyTwoData,projectname,projectPlace,projectOrganization,projectOrganizationd,projectOrganizationdata,schoolname,schoolnameP,schoolCamp,schoolCampD,expert,expertPerformance,expertData,Tools,Skills,AchievementsTwo,AchievementsOne,inputValue,inputEmail,inputProfileLink,names})
+if(a){
+  sethidebutton(false)
+ }
+} catch (error) {
   
  }
   }
@@ -65,11 +68,12 @@ fileDownload(response.data, 'Resume.pdf');
   console.log(error)
  }
   }
+  
   return (
     <>
    
 <button onClick={handelGeneratePdf}  className='bg-sky-500 text-white p-2 rounded'>Generate</button>
-<button onClick={handleDownload}  className='bg-sky-500 text-white p-2 rounded'>Download PDF</button>
+<button style={{ display: hidebutton ? 'none' : '' }} onClick={handleDownload}  className='bg-sky-500 text-white p-2 rounded'>Download PDF</button>
     <form>
       
       <div className='bg-neutral-200 flex justify-center items-center h-[875px]'>
