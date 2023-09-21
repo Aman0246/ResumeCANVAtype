@@ -4,6 +4,8 @@ const { storage } = require("./firebase");
 const fs = require("fs").promises;
 const {ref, uploadBytes} =require ('firebase/storage')
 const { getDownloadURL } = require("firebase/storage");
+const puppeteerExtra = require('puppeteer-extra');
+
 
 // const generatePDF=async(req,res)=>{
 //   console.log('hellow')
@@ -76,7 +78,7 @@ const generatePDF = async (req, res) => {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/TamplateONE', { waitUntil: 'networkidle2' });
-    await page.setViewport({ width: 1680, height: 1050 });
+    // await page.setViewport({ width: 1680, height: 1050 });
     await page.waitForSelector('#root');
     await page.waitForSelector('.templateOne');
 
@@ -119,6 +121,9 @@ const generatePDF = async (req, res) => {
     res.status(500).send("Error generating PDF.");
   }
 };
+
+
+
 
 module.exports = { generatePDF };
 

@@ -19,7 +19,7 @@ export default function Nav() {
         const response = await axios.get('http://localhost:7000/generatePDF', {
           responseType: 'arraybuffer', // Ensure response is treated as binary data
         });
-
+          
         const blob = new Blob([response.data], { type: 'application/pdf' });
         const pdfDataUrl = URL.createObjectURL(blob);
 
@@ -34,7 +34,7 @@ export default function Nav() {
     const handleldownload =async(e)=>{
     try {
    e.preventDefault()
-   const response = await axios.post("http://localhost:7000/download-pdf",{pdfname:'1695214812923'}, { responseType: "blob" });
+   const response = await axios.post("http://localhost:7000/download-pdf",{pdfname:'1695278548104'}, { responseType: "blob" });
    // Use js-file-download to trigger the file download
    fileDownload(response.data, 'Resume.pdf');
     } catch (error) {
@@ -46,16 +46,20 @@ export default function Nav() {
       <button onClick={generate}>generate</button>
       <button onClick={handleldownload}>Download</button>
     </div>
-    <div className='flex flex-col bg-red-500' >
-      <h1>PDF Viewer</h1>
+    <div className='flex flex-col relative bg-red-500' >
+      <h1 className=' z-20 bg-red-500 h-14'>PDF Viewer</h1>
+      <div className='absolute  z-10'>
       {pdfUrl && (
-        <iframe
+        <iframe className="w-[500px]"
           src={pdfUrl}
-          width="50%"
-          height="500px" // Set the desired height for the iframe
+          width="100%"
+          height="700px" // Set the desired height for the iframe
+          style={{ border: 'none' }}
           title="Embedded PDF"
         ></iframe>
       )}
+      </div>
+  
     </div>
   </div>
   )
