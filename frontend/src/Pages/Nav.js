@@ -46,21 +46,21 @@ export default function Nav() {
       <button onClick={generate}>generate</button>
       <button onClick={handleldownload}>Download</button>
     </div>
-    <div className='flex flex-col relative bg-red-500' >
-      <h1 className=' z-20 bg-red-500 h-14'>PDF Viewer</h1>
-      <div className='absolute  z-10'>
-      {pdfUrl && (
-        <iframe className="w-[500px]"
-          src={pdfUrl}
-          width="100%"
-          height="700px" // Set the desired height for the iframe
-          style={{ border: 'none' }}
-          title="Embedded PDF"
-        ></iframe>
-      )}
-      </div>
   
-    </div>
+    <div className='flex relative flex-col w-[100%]'>
+  <h1 className='absolute py-5 text-red-500 font-bold bg-white w-[50%]  top-0 h-[3.5rem]'>PDF Viewer</h1>
+  <div className=''>
+    {pdfUrl && (
+      <iframe className='w-[50%]'
+        src={pdfUrl}
+        height="700px" 
+        style={{ border: 'none' }}
+        title="Embedded PDF"
+      ></iframe>
+    )}
+  </div>
+</div>
+
   </div>
   )
 }
