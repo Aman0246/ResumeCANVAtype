@@ -51,7 +51,7 @@ export default function Nav() {
       {pdfUrl && (
         <iframe
           src={pdfUrl}
-          width="80%"
+          width="50%"
           height="500px" // Set the desired height for the iframe
           title="Embedded PDF"
         ></iframe>
