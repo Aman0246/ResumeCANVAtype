@@ -15,6 +15,7 @@ res.send({data:data})
 // Define a route to download the generated PDF
 tamplateOne.post("/download-pdf",async(req, res) => {
   let {pdfname} = req.body
+  console.log(pdfname)
     const pdfPath = `./public/${pdfname}.pdf`;
     res.download(pdfPath); // This will trigger a download in the user's browser
   });
